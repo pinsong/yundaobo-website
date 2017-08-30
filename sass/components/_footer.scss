@@ -1,0 +1,219 @@
+@import "../mixins";
+@import "../variables";
+
+.site-footer{
+	@include clearfix;
+	position: relative;
+	margin-top: 32px;
+	//padding-left: 16px;
+	//padding-bottom: 16px;
+	transition: 0.6s;
+	opacity: 1;
+	visibility: visible;
+	&.scrolled{
+		opacity: 0;
+		visibility: hidden;
+	}
+	@media(min-width: 601px){
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		//right: 0;
+		//width: 100%;
+		height: 56px;
+		padding-left: 32px;
+		padding-right: 32px;
+		padding-top: 8px;
+		padding-bottom: 8px;
+		//background: transparentize($white,0.2);
+		//background: $white;
+	}
+	z-index: 10;
+	.note{
+		color: $white;
+		float: left;
+		margin-left: 16px;
+		margin-bottom: 40px;
+		position: relative;
+		text-shadow: 0 0 8px rgba(0,0,0,0.4);
+		@media(min-width: 601px){
+			height: 40px;
+			margin-left: 0;
+			margin-block-end: 0;
+		}
+		p{
+			font-size: 14px;
+			margin-bottom: 0;
+			transition: 0.3s;
+			padding-top: 10px;
+			@include condensed;
+			
+			@media(min-width: 601px){
+				font-size: 16px;
+			}
+		}
+		.marked,
+		a{
+			@include marked;
+			padding-left: 0.15em;
+			padding-right: 0.1em;
+			transition: 0.2s;
+		}
+		a:hover{
+			opacity: 0.5;
+		}
+	}
+	
+	.bottom-menu-links{
+		right: 32px;
+		bottom: 0px;
+		position: fixed;
+	}
+	.links{
+		position: relative;
+		padding: 16px;
+		padding-top: 0;
+		// @media(min-width: 801px){
+			padding: 0;
+			float: right;
+			padding-top: 0;
+			padding-right: 0;
+			background: transparent;
+		// }
+		li{
+			text-align: center;
+			// width: 100%;
+			position: relative;
+			// @media(min-width: 601px){
+				width: auto;
+				float: left;
+			// }
+			#menu-link{
+				display: none;
+				@media(min-width: 601px){
+					display: inline-block;
+				}
+			}
+			a{
+				@include condensed;
+				font-size: 16px;
+				padding: 16px 12px;
+				display: inline-block;
+				color: $white;
+				transition: 0.3s;
+				width: 100%;
+				line-height: 1;
+				text-shadow: 0 0 8px rgba(0,0,0,0.4);
+				@media(min-width: 601px){
+					width: auto;
+				}
+				&:hover,
+				&.menu-visible,
+				&:active{
+					color: transparentize($white,0.4);
+					@media(min-width: 601px){
+						color: transparentize($white,0.4);
+					}
+				}
+			}
+			&:last-child{
+				margin-right: -12px;
+			}
+			&.cta{
+				margin-top: -2px;
+				&:before{
+					display: none;
+				}
+				a{
+					border-radius: 4px;
+					padding-left: 24px;
+					padding-right: 24px;
+					background: transparentize($white,0.9);
+					border: 1px solid $white;
+					@media(min-width: 601px){
+						margin-left: 12px;
+					}
+					&:hover{
+						color: $color1;
+						background: $white;
+						border-color: transparentize($white,0.2);
+					}
+				}
+			}
+		}
+	}
+	
+}
+
+// fpNav scroll down
+.scrolldown{
+	position: absolute;
+    bottom: 0;
+	top: auto;
+	right: auto;
+    margin-bottom: 8px;
+    left: 50%;
+	font-family: $sans;
+	z-index: 100;
+	@media (max-width:600px){
+		display: none;
+    	// margin-bottom: 40px;
+	}
+	a{
+		@include condensed;
+		margin-left: -50%;
+		position: relative;
+		display: block;
+		font-size: 14px;
+		line-height: 1;;
+		padding: 8px 8px;
+		transition: 0.3s;
+		color: transparentize($white,0.8);
+		&:after{
+			position: absolute;
+			content: "";
+			bottom: 30px;
+			right: 50%;
+			height: 34px;
+			width: 18px;
+			margin-right: 9px + 4px;
+			border-radius: 40px;
+			border: 1px solid transparentize($white,0.8);
+			background: transparent;
+			transition: 0.3s;
+		}
+		&:before{
+			position: absolute;
+			content: "";
+			bottom: 30px + 24px;
+			right: 50%;
+			height: 4px;
+			width: 4px;
+			margin-right: 16px + 4px;
+			border-radius: 40px;
+			background: transparentize($white,0.8);
+			transition: 0.3s;
+		}
+		&:hover{
+			color: $white;
+			&:before{
+				bottom: 30px + 8px;
+				background: $white;
+			}
+			&:after{
+			}
+		}
+	}
+	
+}
+
+// Class added when section has class js-left-light
+body.left-light{
+	.note{
+		p{
+			@media(max-width: 801px){
+				// color: $medium-gray;
+			}
+		}
+	}
+}
